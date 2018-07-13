@@ -1,4 +1,4 @@
-CREATE TABLE Contract
+CREATE TABLE Contracts
 (
 ID int NOT NULL AUTO_INCREMENT, 
 CompanyName char(255), 
@@ -15,19 +15,24 @@ IV double,
 StartDate Date, 
 Service char(100), 
 Type char(50), 
-EmployeeID int, 
+TeamID int, 
 PRIMARY KEY (ID)
 );
 
-
 CREATE TABLE Employees 
 (
-EmployeeID int NOT NULL AUTO_INCREMENT, 
+ID int NOT NULL AUTO_INCREMENT, 
 Name char(255), 
 Lname char(255),
 Department char(50), 
-Manager bit, 
-teamID int, 
-TypeOfContracts char(50),  
-PRIMARY KEY (EmployeeID)
+IsManager bit, 
+TeamID int, 
+PRIMARY KEY (ID)
 );
+
+CREATE TABLE Teams
+(
+ID int NOT NULL AUTO_INCREMENT,
+ManagerID int,
+PRIMARY KEY (ID)
+)

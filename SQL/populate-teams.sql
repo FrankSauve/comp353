@@ -1,0 +1,12 @@
+INSERT INTO teams (ManagerID) VALUES (1);
+INSERT INTO teams (ManagerID) VALUES (6);
+INSERT INTO teams (ManagerID) VALUES (11);
+INSERT INTO teams (ManagerID) VALUES (16);
+INSERT INTO teams (ManagerID) VALUES (21);
+INSERT INTO teams (ManagerID) VALUES (26);
+INSERT INTO teams (ManagerID) VALUES (31);
+INSERT INTO teams (ManagerID) VALUES (36);
+INSERT INTO teams (ManagerID) VALUES (41);
+INSERT INTO teams (ManagerID) VALUES (46);
+INSERT INTO teams (ManagerID) VALUES (51);
+INSERT INTO teams (ManagerID) VALUES (56);
