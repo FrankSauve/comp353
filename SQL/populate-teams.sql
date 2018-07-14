@@ -1,0 +1,12 @@
+INSERT INTO teams (ManagerID, ServiceType) VALUES (1, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (6, 'Cloud');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (11, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (16, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (21, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (26, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (31,'Cloud');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (36, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (41, 'Cloud');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (46, 'On-premises');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (51, 'Cloud');
+INSERT INTO teams (ManagerID, ServiceType) VALUES (56, 'On-premises');
