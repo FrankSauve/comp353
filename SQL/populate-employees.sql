@@ -4,7 +4,7 @@ INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Rup
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Pauly', 'Giller', 'Development', 0, 1);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Doti', 'Francklin', 'Development', 0, 1);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Loren', 'Prew', 'Development', 0, 1);
-INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Jessika', 'Butchers', 'Development', 1, 2); /*Is a manager*/
+INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Jessika', 'Butchers', 'Development', 0, 2); 
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Terence', 'Mantrip', 'Development', 0, 2);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Sarette', 'Romero', 'Development', 0, 2);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Nicola', 'Mander', 'Development', 0, 2);
@@ -16,7 +16,7 @@ INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Bon
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Buiron', 'Perfili', 'QA', 0, 3);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Keenan', 'Balffye', 'QA', 0, 3);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Caspar', 'Cuttings', 'QA', 0, 3);
-INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Selestina', 'Bunney', 'QA', 1, 4); /*Is a manager*/
+INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Selestina', 'Bunney', 'QA', 0, 4); 
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Hetty', 'McMickan', 'QA', 0, 4);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Lanna', 'Burchell', 'QA', 0, 4);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Tristan', 'Champneys', 'QA', 0, 4);
@@ -28,7 +28,7 @@ INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Ker
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Keefe', 'Winter', 'UI', 0, 5);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Druci', 'Del Checolo', 'UI', 0, 5);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Sarita', 'Reeman', 'UI', 0, 5);
-INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Paulette', 'Biggans', 'UI', 1, 6); /*Is a manager*/
+INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Paulette', 'Biggans', 'UI', 0, 6); 
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Aland', 'Brimble', 'UI', 0, 6);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Baxie', 'Hegel', 'UI', 0, 6);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Daffie', 'Cosyns', 'UI', 0, 6);
@@ -40,7 +40,7 @@ INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Sar
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Constancia', 'Sidery', 'Design', 0, 7);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Analiese', 'Coldrick', 'Design', 0, 7);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Margot', 'Risdale', 'Design', 0, 7);
-INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Fabio', 'Belch', 'Design', 1, 8); /*Is a manager*/ 
+INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Fabio', 'Belch', 'Design', 0, 8); 
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Asa', 'Smerdon', 'Design', 0, 8);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Timothea', 'Diess', 'Design', 0, 8);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Blake', 'Parkyn', 'Design', 0, 8);
@@ -51,7 +51,7 @@ INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Mau
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Rich', 'Pycock', 'Business Intelligence', 0, 9);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Granville', 'Keppy', 'Business Intelligence', 0, 9);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Solly', 'Isard', 'Business Intelligence', 0, 9);
-INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Lucienne', 'Coveley', 'Business Intelligence', 1, 10); /*Is a manager*/
+INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Lucienne', 'Coveley', 'Business Intelligence', 0, 10); 
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Con', 'Tregonna', 'Business Intelligence', 0, 10);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Thorin', 'Rosenblatt', 'Business Intelligence', 0, 10);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Isabelita', 'Smorthwaite', 'Business Intelligence', 0, 10);
@@ -64,7 +64,7 @@ INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Tob
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Filmer', 'Castilla', 'Networking', 0, 11);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Devlen', 'Bettlestone', 'Networking', 0, 11);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Roderic', 'Kasting', 'Networking', 0, 11);
-INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Sonnie', 'Tailby', 'Networking', 1, 12); /*Is a manager*/
+INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Sonnie', 'Tailby', 'Networking', 0, 12); 
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Berrie', 'Kilford', 'Networking', 0, 12);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Nigel', 'Siberry', 'Networking', 0, 12);
 INSERT INTO employees (Name, LName, Department, IsManager,  TeamID) VALUES ('Abner', 'Shirley', 'Networking', 0, 12);
