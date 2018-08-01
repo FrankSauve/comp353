@@ -37,3 +37,12 @@ ManagerID int,
 ServiceType varchar(255),
 PRIMARY KEY (ID)
 )
+
+CREATE TABLE Users
+(
+	ID INT NOT NULL AUTO_INCREMENT,
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    EmployeeID INT NOT NULL,
+    PRIMARY KEY (ID)
+);
