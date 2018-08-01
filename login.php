@@ -27,7 +27,7 @@ if (isset($_POST['username'])) {
     $password = hash("md5" ,$_POST['password']);
 
     // Fetch password of the user
-    $sql = "SELECT Password FROM Users WHERE Username = '$username'";
+    $sql = "SELECT * FROM Users WHERE Username = '$username'";
     $result = $conn->query($sql);
     // If there is no user with that username
     if ($result->num_rows == 0) {
@@ -41,7 +41,9 @@ if (isset($_POST['username'])) {
             echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are now logged in.</div>';
         }
         $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
+        $_SESSION['username'] = $row['Username'];
+        $_SESSION['typeOfUser'] = $row['TypeOfUser'];
+        $_SESSION['employeeID'] = $row['EmployeeID'];
         header('Location: index.php'); // Redirect to navbar
     }
 }

@@ -46,6 +46,8 @@ if (isset($_POST['username'])) {
         }
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
+        $_SESSION['typeOfUser'] = $typeOfUser;
+        $_SESSION['employeeID'] = $employeeID;
         header('Location: index.php'); // Redirect to home
     }
 }

@@ -8,8 +8,6 @@
 
 <?php
     include('navbar.php');
-    $_SESSION['loggedin'] = false;
-    $_SESSION['username'] = "";
     session_unset();
     session_destroy();
     header('Location: index.php'); // Redirect to home
