@@ -25,7 +25,6 @@ if (isset($_POST['username'])) {
     // Password is encrypted with md5
     $password = hash("md5", $_POST['password']);
     $typeOfUser = $_POST['typeOfUser'];
-    $employeeID = $_POST['employeeID'];
 
     // Fetches users with the username from the form
     $sql = "SELECT Username FROM Users WHERE Username = '$username'";
@@ -36,7 +35,7 @@ if (isset($_POST['username'])) {
     }
     else {
         // Query to insert new user
-        $sql = "INSERT INTO Users (Username, Password, TypeOfUser, employeeID) VALUES ('$username', '$password', '$typeOfUser', '$employeeID')";
+        $sql = "INSERT INTO Users (Username, Password) VALUES ('$username', '$password')";
         // If the insert was successful
         if ($conn->query($sql) === TRUE) {
             echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are registered.</div>';
@@ -46,8 +45,6 @@ if (isset($_POST['username'])) {
         }
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
-        $_SESSION['typeOfUser'] = $typeOfUser;
-        $_SESSION['employeeID'] = $employeeID;
         header('Location: index.php'); // Redirect to home
     }
 }
@@ -78,10 +75,6 @@ if (isset($_POST['username'])) {
                 <option>Client</option>
             </select>
         </div>
-        <div class="form-group">
-            <label>Employee ID</label>
-            <input id="employeeID" name="employeeID" type="text" class="form-control" placeholder="Employee ID">
-        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
@@ -92,7 +85,6 @@ if (isset($_POST['username'])) {
     const username = document.getElementById('username');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirmPassword');
-    const employeeID = document.getElementById('employeeID');
 
     // Called on submit
     function submit() {
@@ -118,10 +110,6 @@ if (isset($_POST['username'])) {
         // Checks if the password == confirm password
         else if (password.value != confirmPassword.value) {
             container.innerHTML += '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Passwords must match.</div>';
-        }
-        // Check if employeeID is empty
-        else if (employeeID.value === '') {
-            container.innerHTML += '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Employee ID can not be empty.</div>';
         }
     }
 </script>
