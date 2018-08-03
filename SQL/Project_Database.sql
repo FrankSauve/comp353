@@ -91,14 +91,14 @@ CREATE TABLE `EmployeeType` (
   PRIMARY KEY (`EDID`)
 );
 
-CREATE TABLE `Prefernces` (
+CREATE TABLE `Preferences` (
   `EmployeeID` int,
   `Category` int,
   foreign key (`EmployeeID`) references Employees (EmployeeID),
   foreign key (`Category`) references TypeOfContracts (Category)
 );
 
-CREATE TABLE `Cites` (
+CREATE TABLE `Cities` (
   `CPID` int not null auto_increment,
   `City` varchar(250),
   `Province` varchar(250),
@@ -127,7 +127,7 @@ CREATE TABLE `EmployeeHistory` (
 CREATE TABLE `Insurance` (
   `InsuranceID` int not null auto_increment,
   `TypeDescript` varchar(250),
-  `Covrage` double,
+  `Coverage` double,
   PRIMARY KEY (`InsuranceID`)
 );
 
