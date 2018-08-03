@@ -13,7 +13,7 @@ CREATE TABLE `Company` (
   CompID int not null auto_increment,
   CompName char(250),
   PostalCode char(50),
-    `username` char(255)
+    `username` char(255),
   PRIMARY KEY (`CompID`),
     foreign key (`username`) references Users (username),
   foreign key (PostalCode) references PostalCode (PostalCode)
@@ -72,7 +72,7 @@ CREATE TABLE `Employees` (
   `lName` varchar(50),
   `InsuranceID` int,
   `EDID` int,
-    `username` char(255)
+    `username` char(255),
   PRIMARY KEY (`EmployeeID`),
   foreign key (`InsuranceID`) references Insurance (InsuranceID),
     foreign key (`username`) references Users (username),
