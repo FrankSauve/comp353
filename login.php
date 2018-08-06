@@ -54,7 +54,7 @@ if (isset($_POST['username']) && !$error) {
         if ($password == $row["Password"]) {
             echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are now logged in.</div>';
             $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $row['Username'];
+            $_SESSION['username'] = $row['username'];
             header('Location: index.php'); // Redirect to navbar
         }
         else {
