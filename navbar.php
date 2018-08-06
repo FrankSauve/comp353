@@ -23,6 +23,28 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     $username = $_SESSION['username'];
     $sql = "SELECT fName, lName, EDID FROM Employees WHERE username = '$username'";
     $result = $conn->query($sql);
+    // If the user is an employee
+    if($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $fName = $row["fName"];
+        $lName = $row["lName"];
+        $EDID = $row["EDID"];
+        //Get descript of user
+        $sql = "SELECT Descript FROM EmployeeType WHERE EDID = '$EDID'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $descript = $row["Descript"];
+    }
+    // If the user is a client
+    else {
+        // Get the name of the company
+        $sql = "SELECT CompName FROM Company WHERE username = '$username'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $fName = $row["CompName"];
+        $lName = "";
+        $descript = "Client";
+    }
     $row = $result->fetch_assoc();
     $fName = $row["fName"];
     $lName = $row["lName"];
