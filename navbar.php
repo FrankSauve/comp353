@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <style>
+        .profil{
+            color:whitesmoke;
+        }
+    </style>
 </head>
 <body>
 
 <?php
+include('db_connection.php');
 session_start();
+
 // If the user is logged in
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    // Get user info
+    $username = $_SESSION['username'];
+    $sql = "SELECT fName, lName, EDID FROM Employees WHERE username = '$username'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $fName = $row["fName"];
+    $lName = $row["lName"];
+    $EDID = $row["EDID"];
+    //Get descript of user
+    $sql = "SELECT Descript FROM EmployeeType WHERE EDID = '$EDID'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $descript = $row["Descript"];
+
     echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
@@ -19,6 +41,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
                 </div>
             </div>
+            <ul class=\"nav navbar-nav ml-auto\">
+                <li class=\"nav-item profil\">$fName $lName ($descript)</li>
+            </ul>
         </nav>";
 }
 // If the user is not logged in
