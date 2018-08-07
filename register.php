@@ -70,6 +70,7 @@ if(isset($_POST['username']) && !$error) {
         // If the insert was successful
         if ($conn->query($sql) === TRUE) {
             echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are registered.</div>';
+            // TODO: Insert into the employees table
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
             header('Location: index.php'); // Redirect to home
