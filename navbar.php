@@ -48,7 +48,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     }
 
     // If user is a sales associate
-    if ($EDID == 2) {
+    if (isset($EDID) && $EDID == 2) {
         echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
