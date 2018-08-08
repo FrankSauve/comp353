@@ -56,6 +56,22 @@ else if (isset($_POST['password']) && isset($_POST['confirmPassword'])) {
 if(isset($_POST['username']) && !$error) {
     $username = $_POST['username'];
     $password = hash("md5" , $_POST['password']);
+    $fName = $_POST['fName'];
+    $lName = $_POST['lName'];
+
+    // Get the type EDID from type of user
+    $typeOfUser = $_POST['typeOfUser'];
+    $sql = "SELECT EDID FROM EmployeeType WHERE Descript = '$typeOfUser'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $EDID = $row['EDID'];
+
+    // Get the InsuranceID from the insurance name
+    $insurance = $_POST['insurance'];
+    $sql = "SELECT InsuranceID FROM Insurance WHERE TypeDescript='$insurance'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $insuranceID = $row['InsuranceID'];
 
     // Fetches users with the username from the form
     $sql = "SELECT * FROM Users WHERE Username = '$username'";
@@ -65,15 +81,21 @@ if(isset($_POST['username']) && !$error) {
         echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Username already exists.</div>';
     }
     else {
-        // Query to insert new user
+        // Insert in Users table
         $sql = "INSERT INTO Users VALUES ('$username', '$password')";
         // If the insert was successful
         if ($conn->query($sql) === TRUE) {
-            echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are registered.</div>';
-            // TODO: Insert into the employees table
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $username;
-            header('Location: index.php'); // Redirect to home
+            // Insert in the Employees table
+            $sql = "INSERT INTO Employees (fName, lName, InsuranceID, EDID, username) VALUES ('$fName', '$lName', '$insuranceID', '$EDID', '$username')";
+            if ($conn->query($sql) === TRUE) {
+                echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are registered.</div>';
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username;
+                header('Location: index.php'); // Redirect to home
+            }
+            else {
+                echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Registration failed at employee insert.</div>';
+            }
         } // If there was an error
         else {
             echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Registration failed.</div>';
@@ -91,6 +113,14 @@ if(isset($_POST['username']) && !$error) {
                 <option selected="selected">Employee</option>
                 <option>Manager</option>
                 <option>Sales Associate</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Insurance Plan</label>
+            <select id="insurance" name="insurance" class="form-control">
+                <option selected="selected">Premium</option>
+                <option>Silver</option>
+                <option>Normal</option>
             </select>
         </div>
         <div class="form-group">
