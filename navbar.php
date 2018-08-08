@@ -21,11 +21,12 @@ session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     // Get user info
     $username = $_SESSION['username'];
-    $sql = "SELECT fName, lName, EDID FROM Employees WHERE username = '$username'";
+    $sql = "SELECT EmployeeID, fName, lName, EDID FROM Employees WHERE username = '$username'";
     $result = $conn->query($sql);
     // If the user is an employee
     if($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $empID = $row["EmployeeID"];
         $fName = $row["fName"];
         $lName = $row["lName"];
         $EDID = $row["EDID"];
@@ -39,29 +40,48 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     // If the user is a client
     else {
         // Get the name of the company
-        $sql = "SELECT CompName FROM Company WHERE username = '$username'";
+        $sql = "SELECT CompID, CompName FROM Company WHERE username = '$username'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
+        $compID = $row["CompID"];
         $fName = $row["CompName"];
         $lName = "";
         $descript = "Client";
     }
 
-    // If user is a sales associate
-    if (isset($EDID) && $EDID == 2) {
-        echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+    if(isset($EDID)){
+        // If user is a sales associate
+        if ($EDID == 2) {
+            echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
                 <div class=\"navbar-nav\">
                     <a class=\"nav-item nav-link active\" href=\"./\">Home</a>
-                    <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
                     <a class=\"nav-item nav-link\" href=\"./client_creation.php\">Client Creation</a>
+                    <a class=\"nav-item nav-link\" href=\"./employee_view.php\">My Profile</a>
+                    <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
                 </div>
             </div>
             <ul class=\"nav navbar-nav ml-auto\">
                 <li class=\"nav-item profil\">$fName $lName ($descript)</li>
             </ul>
         </nav>";
+        }
+        else {
+            echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+            <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
+            <div class=\"collapse navbar-collapse\">
+                <div class=\"navbar-nav\">
+                    <a class=\"nav-item nav-link active\" href=\"./\">Home</a>
+                    <a class=\"nav-item nav-link\" href=\"./employee_view.php\">My Profile</a>
+                    <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
+                </div>
+            </div>
+            <ul class=\"nav navbar-nav ml-auto\">
+                <li class=\"nav-item profil\">$fName $lName ($descript)</li>
+            </ul>
+        </nav>";
+        }
     }
     else {
         echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
