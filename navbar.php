@@ -29,6 +29,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $fName = $row["fName"];
         $lName = $row["lName"];
         $EDID = $row["EDID"];
+        $_SESSION['EDID'] = $EDID; // Set session variable for EDID
         //Get descript of user
         $sql = "SELECT Descript FROM EmployeeType WHERE EDID = '$EDID'";
         $result = $conn->query($sql);
@@ -45,17 +46,25 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $lName = "";
         $descript = "Client";
     }
-    $row = $result->fetch_assoc();
-    $fName = $row["fName"];
-    $lName = $row["lName"];
-    $EDID = $row["EDID"];
-    //Get descript of user
-    $sql = "SELECT Descript FROM EmployeeType WHERE EDID = '$EDID'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $descript = $row["Descript"];
 
-    echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+    // If user is a sales associate
+    if (isset($EDID) && $EDID == 2) {
+        echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+            <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
+            <div class=\"collapse navbar-collapse\">
+                <div class=\"navbar-nav\">
+                    <a class=\"nav-item nav-link active\" href=\"./\">Home</a>
+                    <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
+                    <a class=\"nav-item nav-link\" href=\"./client_creation.php\">Client Creation</a>
+                </div>
+            </div>
+            <ul class=\"nav navbar-nav ml-auto\">
+                <li class=\"nav-item profil\">$fName $lName ($descript)</li>
+            </ul>
+        </nav>";
+    }
+    else {
+        echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
                 <div class=\"navbar-nav\">
@@ -67,6 +76,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <li class=\"nav-item profil\">$fName $lName ($descript)</li>
             </ul>
         </nav>";
+    }
 }
 // If the user is not logged in
 else {
@@ -82,8 +92,6 @@ else {
         </nav>";
     }
 ?>
-
-
 </body>
 </html>
 
