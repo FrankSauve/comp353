@@ -30,6 +30,13 @@ else if (!isset($_SESSION['EDID'])) {
     header('Location: unauthorized.html');
 }
 
+//getting preference upon loading
+$sql = "SELECT Category FROM Preferences WHERE EmployeeID = '$empID'";
+$result = $conn->query($sql);
+//if the employees preference already exists in the DB, display it
+if (($result->num_rows > 0)) {
+    $selectedPreference = $result->fetch_assoc()['Category'];
+}
 
 if(isset($_POST["preference"])) {
     $selectedPreference = $_POST['preference'];
@@ -97,12 +104,12 @@ if(isset($_POST["preference"])&& !$error){
                 $result = $conn->query($sql);
                 while($categories = $result->fetch_assoc()) {
                     // Set the selected province in the drop down
-                    if ($categories['Category'] != $selectedPreference) {
-                        echo "<option>$categories[Category]</option>";
-                    }
-                    else {
+                    if ($categories['Category'] == $selectedPreference && !$checkSelected) {
                         echo "<option selected>$categories[Category]</option>";
                         $checkSelected = true;
+                    }
+                    else {
+                        echo "<option>$categories[Category]</option>";
                     }
                 }
                 if($checkSelected){
@@ -111,7 +118,7 @@ if(isset($_POST["preference"])&& !$error){
                 else{
                     echo "<option selected>No Preference</option>";
                 }
-
+                $checkSelected=false;
                 ?>
             </select>
         </div>
