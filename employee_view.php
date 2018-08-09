@@ -41,14 +41,15 @@ if(isset($_POST["preference"])&& !$error){
 
     $sql = "SELECT Category FROM Preferences WHERE EmployeeID = '$empID'";
     $result = $conn->query($sql);
-    //if the employees preference already exists in the DB, update it if its different
+    //if the employees preference already exists in the DB
     if (($result->num_rows > 0)) {
+        //Remove it if the user has no preference
         if($selectedPreference === 'No Preference'){
             //Delete record if the user wishes to not express a preference
             $sql = "DELETE FROM Preferences WHERE EmployeeID = '$empID'";
             if ($conn->query($sql) === TRUE) {
                 // Employee successfully updated their preferences
-                echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Preferences Updated.</div>';
+                echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Preferences Removed.</div>';
             } else {
                 echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Unable to delete previous preferences.</div>';
             }
@@ -70,7 +71,7 @@ if(isset($_POST["preference"])&& !$error){
         // If the insert was successful
         if ($conn->query($sql) === TRUE) {
             // Employee successfully updated their preferences
-            echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Preferences Updated.</div>';
+            echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Preferences Recorded.</div>';
         } else {
             echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Unable to add user preference.</div>';
         }
@@ -83,6 +84,38 @@ if(isset($_POST["preference"])&& !$error){
 <body>
 <div id="container">
     <h1>My Profile</h1>
+    <form name="preferenceSelection" action="employee_view.php" method="post">
+        <div class="form-group">
+            <label>Contract Preference</label>
+            <select class="form-control" id="pref" name="preference" onchange="preferenceSelection.submit()">
+                <?php
+
+                $checkSelected = false;
+
+                // Insert all the category options into a select (Done rather than inserting manually in case new categories are added)
+                $sql = "SELECT DISTINCT Category FROM Preferences";
+                $result = $conn->query($sql);
+                while($categories = $result->fetch_assoc()) {
+                    // Set the selected province in the drop down
+                    if ($categories['Category'] != $selectedPreference) {
+                        echo "<option>$categories[Category]</option>";
+                    }
+                    else {
+                        echo "<option selected>$categories[Category]</option>";
+                        $checkSelected = true;
+                    }
+                }
+                if($checkSelected){
+                    echo "<option>No Preference</option>";
+                }
+                else{
+                    echo "<option selected>No Preference</option>";
+                }
+
+                ?>
+            </select>
+        </div>
+    </form>
     <label>Contract History</label>
     <?php
     $sql = "SELECT EmployeeHistory.teamID, EmployeeHistory.contID, Company.CompName, EmployeeHistory.isActive FROM EmployeeHistory, Contracts, Company WHERE EmployeeHistory.EmployeeID = '$empID' AND EmployeeHistory.contID = Contracts.ContID AND Company.CompID = Contracts.CompID";
@@ -131,38 +164,6 @@ if(isset($_POST["preference"])&& !$error){
     }
 
     ?>
-    <form name="preferenceSelection" action="employee_view.php" method="post">
-        <div class="form-group">
-            <label>Contract Preference</label>
-            <select class="form-control" id="pref" name="preference" onchange="preferenceSelection.submit()">
-                <?php
-
-                $checkSelected = false;
-
-                // Insert all the category options into a select (Done rather than inserting manually in case new categories are added)
-                $sql = "SELECT DISTINCT Category FROM Preferences";
-                $result = $conn->query($sql);
-                while($categories = $result->fetch_assoc()) {
-                    // Set the selected province in the drop down
-                    if ($categories['Category'] != $selectedPreference) {
-                        echo "<option>$categories[Category]</option>";
-                    }
-                    else {
-                        echo "<option selected>$categories[Category]</option>";
-                        $checkSelected = true;
-                    }
-                }
-                if($checkSelected){
-                    echo "<option>No Preference</option>";
-                }
-                else{
-                    echo "<option selected>No Preference</option>";
-                }
-
-                ?>
-            </select>
-        </div>
-    </form>
 </div>
 </body>
 </html>
