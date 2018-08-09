@@ -21,13 +21,27 @@
 <?php
 include('navbar.php');
 include('db_connection.php');
+$error = false; // Becomes true if there is a validation error
 
-if (isset($_POST['username'])) {
+// Username validation
+if (isset($_POST['username']) && $_POST['username'] == '') {
+    echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Username can not be empty.</div>';
+    $error = true;
+}
+// Password validation
+else if (isset($_POST['password'])) {
+    if ($_POST['password'] == '') {
+        echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Password can not be empty.</div>';
+        $error = true;
+    }
+}
+// Validation passed
+if (isset($_POST['username']) && !$error) {
     $username = $_POST['username'];
     $password = hash("md5" ,$_POST['password']);
 
     // Fetch password of the user
-    $sql = "SELECT * FROM Users WHERE Username = '$username'";
+    $sql = "SELECT * FROM Users WHERE username = '$username'";
     $result = $conn->query($sql);
     // If there is no user with that username
     if ($result->num_rows == 0) {
@@ -39,12 +53,13 @@ if (isset($_POST['username'])) {
         // Compare md5 hashes of the login password with the password in DB
         if ($password == $row["Password"]) {
             echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are now logged in.</div>';
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $row['username'];
+            header('Location: index.php'); // Redirect to navbar
         }
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $row['Username'];
-        $_SESSION['typeOfUser'] = $row['TypeOfUser'];
-        $_SESSION['employeeID'] = $row['EmployeeID'];
-        header('Location: index.php'); // Redirect to navbar
+        else {
+            echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Password is incorrect.</div>';
+        }
     }
 }
 ?>
@@ -63,31 +78,5 @@ if (isset($_POST['username'])) {
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
-<script>
-    // DOM elements
-    const container = document.getElementById('container');
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-
-    // Called on submit
-    function submit() {
-        validateForm();
-    }
-
-    // Used to validate the login form
-    function validateForm() {
-        // Checks if username is empty
-        if (username.value === '') {
-            // Create the alert
-            container.innerHTML += '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Username can not be empty.</div>';
-        }
-        // Checks if password is empty
-        else if (password.value === '') {
-            // Create the alert
-            container.innerHTML += '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Password can not be empty.</div>';
-        }
-    }
-</script>
 </body>
 </html>
