@@ -7,17 +7,12 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <style>
-        #container {
+        .pad {
             margin-top: 30px;
             margin-left: 200px;
             margin-right: 200px;
+            margin-bottom: 30px;
         }
-
-        .pad {
-            padding-left: 1em;
-            padding-top: 1em;
-        }
-
     </style>
 </head>
 <body>
@@ -34,39 +29,40 @@ include('navbar.php');
     $sql = "SELECT DISTINCT(CompName) FROM Company";
     $result = $conn->query($sql);
 
-    echo 'Please select a Company:   <select name="Company_Selection" >';
+    echo 'Please select a Company:   <select class="form-control" name="Company_Selection" >';
     echo '<option value=""></option>';
     // output data of each row
     while ($row = $result->fetch_assoc()) {
         echo '<option value="' . $row['CompName'] . '">' . $row['CompName'] . '</option>';
     }
-    echo '</select>';
-    echo '     ' . '<input type ="submit" name="submit" value="Submit"/>';
+    echo '</select><br>';
+    echo '     ' . '<input type ="submit" name="submit" value="Submit" class="btn btn-primary"/>';
     echo '</form>';
     #$conn->close();
     '<br/>';
 
     if (isset($_POST['submit'])) {
         $selected_val = $_POST['Company_Selection'];
-        echo "Company selected: <Strong>" . $selected_val . "</Strong><br>";
-        echo "<br> This Company has the following Contracts, please click on the contract you want to edit or review";
+        echo "<br> This Company has the following Contracts, please click on the contract you want to edit or review:<br>";
         echo '<form action="#" method="post">';
 
         $sql1 = "SELECT  ContID FROM Contracts inner join Company on Contracts.CompID = Company.CompID
                 where Company.CompName = '" . $selected_val . "'";
         $result1 = $conn->query($sql1);
 
-        echo 'Please select a contract:   <select name="Contracts_Selection">';
+        echo '<select name="Contracts_Selection" class="form-control" >';
         echo '<option value=""></option>';
         // output data of each row
         while ($row1 = $result1->fetch_assoc()) {
             echo '<option value="' . $row1['ContID'] . '">' . $row1['ContID'] . '</option>';
         }
-        echo '</select>';
-        echo '     ' . '<input type ="submit" name="Enter" value="Submit"/>';
+        echo '</select><br>';
+        echo '     ' . '<input type ="submit" name="Enter" value="Submit" class="btn btn-primary"/>';
         echo '</form>';
     }
+    if (isset($_POST['submit'])) {
 
+    }
     echo '<br>';
 
     if (isset($_POST['Enter'])) {
@@ -77,8 +73,8 @@ include('navbar.php');
         $result2 = $conn->query($sql2);
 
         while ($row2 = $result2->fetch_assoc()) {
-            echo "The company selected is <Strong>" . $row2['CompName'] . "</Strong> and contract # is <Strong>"
-                . $row2['ContID'] . "</Strong>";
+            echo "<h5>The company selected is <Strong>" . $row2['CompName'] . "</Strong> and contract # is <Strong>"
+                . $row2['ContID'] . "</Strong></h5>";
         }
 
         echo '<form action="#" method="post">';
@@ -106,9 +102,9 @@ include('navbar.php');
 
         while ($row3 = $result3->fetch_assoc()) {
 
-            echo 'Contract ID: <input type="text" name ="ContID" id="ContID" value= "' . $row3['ContID'] . '" readonly </input> <br>';
+            echo '<br><label>Contract ID:</label> <input type="text" name ="ContID" id="ContID" class="form-control" value= "' . $row3['ContID'] . '" readonly </input> <br>';
 
-            echo '<br>Company Name: <select name="CompanyName_Selection" >';
+            echo '<br>Company Name: <select class="form-control" name="CompanyName_Selection" >';
             echo '<option selected="selected"> ' . $row3['CompName'] . '</option>';
             // output data of each row
             while ($row7 = $result7->fetch_assoc()) {
@@ -117,7 +113,7 @@ include('navbar.php');
             }
             echo '</select><br>';
 
-            echo 'Responsible Name: <select name="Responsible_Selection" >';
+            echo 'Responsible Name: <select name="Responsible_Selection" class="form-control">';
             echo '<option selected="selected"> ' . $row3['fName'] . " " . $row3['lName'] . '</option>';
             // output data of each row
             while ($row4 = $result4->fetch_assoc()) {
@@ -127,17 +123,17 @@ include('navbar.php');
             echo '</select><br>';
 
 
-            echo 'Annual Contract Value: <input type="text" name="AVC" id="AVC" value= "' . $row3['AVC'] . '" </input><br>';
+            echo 'Annual Contract Value: <input type="text" name="AVC" id="AVC" class="form-control" value= "' . $row3['AVC'] . '" </input><br>';
 
 
-            echo 'Initial Value: <input type="text" name="IV" id="IV" value= "' . $row3['IV'] . '" </input><br>';
+            echo 'Initial Value: <input type="text" name="IV" id="IV" class="form-control" value= "' . $row3['IV'] . '" </input><br>';
 
 
-            echo 'Start date of the contract: <input type="text" name="StartDate" id="StartDate" value= "' . $row3['StartDate'] . '" 
-                    </input> If changing the date please use the same style. <br>';
+            echo 'Start date of the contract: <input type="text" name="StartDate" id="StartDate" class="form-control" value= "' . $row3['StartDate'] . '" 
+                    </input> <span style="color:#A9A9A9;">If changing the date please use the same style.</span><br>';
 
 
-            echo 'Category: <select name="Category_Selection" >';
+            echo 'Category: <select name="Category_Selection" class="form-control">';
             echo '<option selected="selected"> ' . $row3['Category'] . '</option>';
             // output data of each row
             while ($row5 = $result5->fetch_assoc()) {
@@ -147,7 +143,7 @@ include('navbar.php');
             echo '</select><br>';
 
 
-            echo 'Address: <select name="Address_Selection" >';
+            echo 'Address: <select name="Address_Selection" class="form-control">';
             echo '<option selected="selected"> ' . $row3['PostalCode'] . " " . $row3['City'] . " " . $row3['Province'] . '</option>';
             // output data of each row
             while ($row6 = $result6->fetch_assoc()) {
@@ -157,10 +153,10 @@ include('navbar.php');
             echo '</select><br>';
 
 
-            echo 'Rating Given by client: <input type="text" id="Rating" value= "' . $row3['Rating'] . '" readonly </input> <br>';
+            echo 'Rating Given by client: <input type="text" id="Rating" class="form-control" value= "' . $row3['Rating'] . '" readonly </input> <br>';
         }
-        echo '<br><input type ="submit" name="Update" value="Update"/>';
-        echo '    <input type ="submit" name="Delete" value="Delete"/>';
+        echo '<br><input type ="submit" name="Update" value="Update" class="btn btn-primary"/>';
+        echo '    <input type ="submit" name="Delete" value="Delete" class="btn btn-primary"/>';
         echo '</form>';
     }
 
@@ -175,6 +171,8 @@ include('navbar.php');
         $selected_Category = $_POST['Category_Selection'];
         $selected_Address = $_POST['Address_Selection'];
         $SpiltAddress = explode(" ", $selected_Address);
+
+
         if (preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $selected_StartDate) &&
             !empty($Select_Contract) && !empty($selected_Comp) && !empty($selected_Respo)
             && !empty($selected_AVC) && !empty($selected_IV) && !empty($selected_StartDate)
@@ -183,7 +181,7 @@ include('navbar.php');
             //Update IV value in a contract
             $sql8 = "Update Contracts set IV = $selected_IV where ContID = $Select_Contract ";
             if ($conn->query($sql8) === TRUE) {
-                echo "Record updated successfully for Contract ID: " . $selected_Comp . $Select_Contract;
+              //  echo "Record updated successfully for Contract ID: " . $selected_Comp . $Select_Contract;
             } else {
                 echo "Error updating record: " . $selected_IV . $Select_Contract . $conn->error;
             }
@@ -192,7 +190,7 @@ include('navbar.php');
             $sql9 = "update Contracts set CompID = (select CompID from Company where CompName = '" . $selected_Comp . "') 
                  where ContID = $Select_Contract";
             if ($conn->query($sql9) === TRUE) {
-                echo "<br>Record updated successfully for Company Name: " . $selected_Comp;
+               // echo "<br>Record updated successfully for Company Name: " . $selected_Comp;
             } else {
                 echo "Error updating record: " . $conn->error;
             }
@@ -202,7 +200,7 @@ include('navbar.php');
          and lName like '" . $SpiltName[1] . "')
                  where ContID = $Select_Contract";
             if ($conn->query($sql10) === TRUE) {
-                echo "<br> Record updated successfully for Responsible:" . $SpiltName[0] . " " . $SpiltName[1];
+              //  echo "<br> Record updated successfully for Responsible:" . $SpiltName[0] . " " . $SpiltName[1];
             } else {
                 echo "Error updating record: " . $conn->error;
             }
@@ -210,7 +208,7 @@ include('navbar.php');
             //Update AVC
             $sql11 = "update Contracts set AVC = $selected_AVC where ContID = $Select_Contract";
             if ($conn->query($sql11) === TRUE) {
-                echo "<br>Record updated successfully for Annual value cost: " . $selected_AVC;
+              //  echo "<br>Record updated successfully for Annual value cost: " . $selected_AVC;
             } else {
                 echo "Error updating record: " . $conn->error;
             }
@@ -218,7 +216,7 @@ include('navbar.php');
             //Update Start Date
             $sql12 = "update Contracts set StartDate = '$selected_StartDate'  where ContID = $Select_Contract";
             if ($conn->query($sql12) === TRUE) {
-                echo "<br>Record updated successfully for Date: " . $selected_StartDate;
+               // echo "<br>Record updated successfully for Date: " . $selected_StartDate;
             } else {
                 echo "Error updating record: " . $conn->error . " " . $Select_Contract;
             }
@@ -226,7 +224,7 @@ include('navbar.php');
             //Update Category
             $sql12 = "update Contracts set Category = '$selected_Category' where ContID = $Select_Contract";
             if ($conn->query($sql12) === TRUE) {
-                echo "<br>Record updated successfully for Category: " . $selected_Category;
+               // echo "<br>Record updated successfully for Category: " . $selected_Category;
             } else {
                 echo "Error updating record: " . $conn->error . " " . $Select_Contract;
             }
@@ -240,10 +238,11 @@ include('navbar.php');
                 echo "Error updating record: " . $conn->error;
             }
 
+            echo '<br><div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Record has been updated successfully.</div>';
         }
 
         else {
-            Echo 'Some of the information entered is wrong, please make sure to fill in everything correctly.';
+            echo '<br><div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Something is wrong with the input please make sure you have filled in all the fields correctly! </div>';
         }
     }
 
