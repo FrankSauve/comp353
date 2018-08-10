@@ -12,7 +12,8 @@
 <h3>Please Select a Task</h3>
 <a href="empSearch_manager.php?type=hour">Employee Hours Report</a> </br>
 <a href="contractSearch_manager.php?type=hour">Contract Hours Report</a> </br>
-<a href="contractSearch_manager.php?type=remove">Remove Employee from Contract</a>
+<a href="contractSearch_manager.php?type=remove">Remove Employee from Contract</a></br>
+<a href="viewContracts_manager.php?">View Contracts</a>
 
 </body>
 </html>

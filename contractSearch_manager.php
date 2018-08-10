@@ -7,12 +7,6 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <style>
-        #container {
-            margin-top: 30px;
-            margin-left: 200px;
-            margin-right: 200px;
-        }
-
         .pad {
             padding-left: 1em;
             padding-top: 1em;
@@ -23,7 +17,6 @@
 <body>
 <?php
 $type = $_GET['type'];
-echo $type;
 include('navbar.php');
 ?>
 

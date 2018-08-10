@@ -1,6 +1,5 @@
 <?php
 $type = $_GET['type'];
-echo $type;
 if ($_GET['q'] === '') {
 
     header('Location: empSearch_manager.php');
