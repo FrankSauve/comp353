@@ -58,6 +58,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <div class=\"navbar-nav\">
                     <a class=\"nav-item nav-link active\" href=\"./\">Home</a>
                     <a class=\"nav-item nav-link\" href=\"./client_creation.php\">Client Creation</a>
+                    <a class=\"nav-item nav-link\" href=\"./contract_creation.php\">Contract Creation</a>
                     <a class=\"nav-item nav-link\" href=\"./employee_view.php\">My Profile</a>
                     <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
                 </div>
@@ -68,7 +69,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         </nav>";
         }
          //If User is an admin.
-        if ($EDID == 4) {
+        else if ($EDID == 4) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
