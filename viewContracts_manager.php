@@ -30,6 +30,7 @@ $result = $conn->query($sql);
 
 echo 'Please select contract type:   <select name="Contract_Selection" >';
 echo '<option value=""></option>';
+echo '<option value="All">All</option>';
 // output data of each row
 while ($row = $result->fetch_assoc()) {
     echo '<option value="' . $row['Category'] . '">' . $row['Category'] . '</option>';
@@ -46,6 +47,15 @@ if (isset($_POST['submit'])) {
     echo "<br> The following contract type is associated with the following companies";
     echo '<form action="#" method="post">';
 
+if ($selected_val == 'all'){
+    $sql1 = "SELECT  Contracts.contID, Company.CompName, Contracts.StartDate
+            from Contracts
+            inner join Company on Contracts.CompID = Company.CompID
+            order by StartDate;";
+    $result1 = $conn->query($sql1);
+    $num_rows = mysqli_num_rows($result1);
+    echo $num_rows . " Results Found" . '</br>' . '</br>';
+}else{
 
     $sql1 = "SELECT  Contracts.contID, Company.CompName, Contracts.StartDate
             from Contracts
@@ -53,7 +63,7 @@ if (isset($_POST['submit'])) {
             where Category = '$selected_val' order by StartDate;";
     $result1 = $conn->query($sql1);
     $num_rows = mysqli_num_rows($result1);
-    echo $num_rows . " Results Found" . '</br>' . '</br>';
+    echo $num_rows . " Results Found" . '</br>' . '</br>';}
 
     echo "<table border='1'>
             <tr>
