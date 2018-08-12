@@ -53,35 +53,44 @@
     <select />
   </component>
   <component name="FUSProjectUsageTrigger">
+
     <session id="-10083252">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="md" value="1" />
           <entry key="php" value="29" />
+
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+
           <entry key="Markdown" value="1" />
           <entry key="PHP" value="29" />
           <entry key="PLAIN_TEXT" value="1" />
+
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
+
           <entry key="git.branch.checkout.local" value="2" />
           <entry key="git.branch.merge" value="1" />
+
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+
           <entry key="php" value="5473" />
           <entry key="txt" value="170" />
+
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+
           <entry key="HTML" value="6" />
           <entry key="PHP" value="5467" />
           <entry key="PLAIN_TEXT" value="170" />
@@ -92,6 +101,7 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.opened" value="1" />
+
         </counts>
       </usages-collector>
     </session>
@@ -99,14 +109,17 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+
         <entry file="file://$PROJECT_DIR$/register.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="326">
               <caret line="89" column="16" lean-forward="true" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="43" />
+
             </state>
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="adminview.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adminview.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -126,6 +139,7 @@
         </entry>
       </file>
       <file leaf-file-name="client_creation.php" pinned="false" current-in-tab="false">
+
         <entry file="file://$PROJECT_DIR$/client_creation.php">
           <provider selected="true" editor-type-id="text-editor">
 
@@ -137,8 +151,10 @@
         </entry>
       </file>
 
+
       <file leaf-file-name="contract_creation.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/contract_creation.php">
+
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="756">
               <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
@@ -163,7 +179,9 @@
         <entry file="file://$PROJECT_DIR$/report.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-14">
+
               <caret line="94" column="41" lean-forward="true" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" 
+
             </state>
           </provider>
         </entry>
@@ -195,6 +213,7 @@
         <option value="$PROJECT_DIR$/adminview.php" />
         <option value="$PROJECT_DIR$/contract_creation.php" />
         <option value="$PROJECT_DIR$/editResponsible.php" />
+
         <option value="$PROJECT_DIR$/manager_RatingView.php" />
         <option value="$PROJECT_DIR$/navbar.php" />
         <option value="$PROJECT_DIR$/register.php" />
@@ -210,8 +229,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
+
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectLevelVcsManager">
@@ -1040,8 +1061,10 @@
       </list>
     </option>
   </component>
+
   <component name="RunManager">
     <configuration name="adminview.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/adminview.php" />
+
     <recent_temporary>
       <list>
         <item itemvalue="PHP Script.adminview.php" />
@@ -1065,6 +1088,8 @@
       <workItem from="1533272290226" duration="998000" />
       <workItem from="1533273306537" duration="268000" />
       <workItem from="1533274312598" duration="692000" />
+
+
     </task>
 
     <task id="LOCAL-00001" summary="Show employees with less than 60 hours and premium insurance">
@@ -1073,6 +1098,7 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1533930411122</updated>
+
     </task>
     <task id="LOCAL-00002" summary="Second required query">
       <created>1533941959739</created>
@@ -1092,6 +1118,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+
     <option name="totallyTimeSpent" value="38857000" />
   </component>
   <component name="ToolWindowManager">
@@ -1111,12 +1138,14 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24378109" />
       <window_info id="Favorites" order="2" side_tool="true" />
+
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13015874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1141,6 +1170,7 @@
   </component>
 
   <component name="VcsManagerConfiguration">
+
     <MESSAGE value="Show employees with less than 60 hours and premium insurance" />
     <MESSAGE value="Second required query" />
     <MESSAGE value="Report query to get first deliverable of contracts in 2017" />
@@ -1246,12 +1276,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <caret line="17" selection-start-line="17" selection-end-line="46" selection-end-column="8" />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/navbar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1260,6 +1292,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
+
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/db_connection.php">
@@ -1421,7 +1454,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="77" column="14" lean-forward="true" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
-          
+
         </state>
       </provider>
     </entry>

@@ -5,6 +5,7 @@
     <title>My Hours</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
         #container {
@@ -88,7 +89,7 @@
             $sql = "SELECT Date, ContID, hours FROM Hours WHERE EmployeeID = '$employeeID'";
             $result = $conn->query($sql);
 
-            echo "<table border='1'>
+            echo "<table class = 'w3-table-all w3-card-4' border='1'>
             <tr>
             <th>Date</th>
             <th>Contract ID</th>

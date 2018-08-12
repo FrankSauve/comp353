@@ -85,6 +85,23 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </ul>
         </nav>";
         }
+
+        //If User is a manager.
+        if ($EDID == 1) {
+            echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
+            <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
+            <div class=\"collapse navbar-collapse\">
+                <div class=\"navbar-nav\">
+                    <a class=\"nav-item nav-link active\" href=\"./\">Home</a>
+                    <a class=\"nav-item nav-link\" href=\"./home_manager.php\">Reports</a>
+                    <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
+                </div>
+            </div>
+            <ul class=\"nav navbar-nav ml-auto\">
+                <li class=\"nav-item profil\">$fName $lName ($descript)</li>
+            </ul>
+        </nav>";
+        }
         //If User is an Employee.
         if ($EDID == 3) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">

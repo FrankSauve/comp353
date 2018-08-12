@@ -5,6 +5,7 @@
     <title>Report</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
         #container {
@@ -24,17 +25,15 @@
 <?php
     include('navbar.php');
 
-    // TODO: Uncomment when manager is created
-//    // Check if the user is authorized to see this page
-//    // If the user is not logged in
-//    if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
-//        header('Location: unauthorized.html');
-//    }
-//    // If the user is not a manager
-//    else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
-//        header('Location: unauthorized.html');
-//    }
-
+    // Check if the user is authorized to see this page
+    // If the user is not logged in
+    if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+        header('Location: unauthorized.html');
+    }
+    // If the user is not a manager
+    else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
+        header('Location: unauthorized.html');
+    }
 
 ?>
 <body>
@@ -49,7 +48,7 @@
 
         $count = 0;
         // Get sum of hours of all employees with insurance plan
-        echo "<table border='1'>
+        echo "<table class = 'w3-table-all w3-card-4' border='1'>
             <tr>
             <th>EmployeeID</th>
             <th>First Name</th>
@@ -114,7 +113,7 @@
             $sql = "SELECT StartDate, FirstDeliv, ContID, Category FROM Contracts WHERE StartDate < '2018-01-01' AND StartDate > '2016-12-31' ORDER BY StartDate";
             $result = $conn->query($sql);
 
-            echo "<table border='1'>
+            echo "<table class = 'w3-table-all w3-card-4' border='1'>
                 <tr>
                 <th>ContID</th>
                 <th>Category</th>
