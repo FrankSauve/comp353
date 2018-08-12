@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        .tftable { margin-right:100px;}
+        .pad {
+                margin-top: 30px;
+                margin-left: 200px;
+                margin-right: 200px;
+                margin-bottom: 30px;
+        }
 
     </style>
 </head>
@@ -30,9 +36,9 @@ $query = mysqli_query($conn, "select Company.CompID,Company.CompName, count(Type
                                         where TypeOfService = 'Cloud'
                                         group by Company.CompName order by count(TypeOfService) desc limit 1;");
 
-echo "<div style= 'float: left'>
+echo "<div class=\"pad\">
 <caption align='left'>Cloud</caption>
-      <table class = 'tftable' border='1'>
+      <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
                 <td align='center'>Company ID</td>
@@ -56,9 +62,11 @@ $query2 = mysqli_query($conn, "select Company.CompID,Company.CompName, count(Typ
                                         where TypeOfService = 'On-premises'
                                         group by Company.CompName order by count(TypeOfService) desc limit 1;");
 
-echo "<div style= 'float: left' padding-left: '50px';>
+echo "<div class=\"pad\">
+</br>
+</br>
 <caption>On-premises</caption>
-      <table class = 'tftable' border='1'>
+      <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
                 <td align='center'>Company ID</td>

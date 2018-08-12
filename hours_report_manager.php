@@ -14,6 +14,7 @@ $id = $_GET['id'];
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@ Employees.EmployeeID = $id and
 Year(Hours.Date) = $year 
 group by Contracts.contID;");
 
-    echo "<table border='1'>
+    echo "<table class = 'w3-table-all w3-card-4' border='2'>
             <tr>
                 <td>Contract ID</td>
                 <td>Company Name</td>
@@ -60,7 +61,7 @@ else
     Employees.EmployeeID = $id 
     group by Contracts.contID;");
 
-        echo "<table border='1'>
+        echo "<table class = 'w3-table-all w3-card-4' border='2'>
                 <tr>
                     <td>Contract ID</td>
                     <td>Company Name</td>

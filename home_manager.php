@@ -19,10 +19,12 @@
 <h3 class="h3">Please Select a Task</h3>
 <a class="links" href="empSearch_manager.php?type=hour">Employee Hours Report</a> </br>
 <a class="links" href="contractSearch_manager.php?type=hour">Contract Hours Report</a> </br>
+<a class="links" href="add_employees.php">Add Employee to Contract</a> </br>
 <a class="links" href="contractSearch_manager.php?type=remove">Remove Employee from Contract</a></br>
 <a class="links" href="viewContracts_manager.php">View Contracts</a></br>
 <a class="links"" href="top_contracts.php">View Clients With Most Contracts</a></br>
 <a class="links" href="top_ratings.php">View Highest Ratings Grouped by City</a></br>
+<a class="links" href="fetch_empDetails.php">Fetch Employees Details From Quebec</a></br>
 <a class="links" href="contract_details.php">Contracts Recorded Within the Last 10 Days in All Categories</a>
 
 </body>

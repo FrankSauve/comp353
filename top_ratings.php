@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        .tftable { margin-right: 10px;}
+        .pad {
+                margin-top: 30px;
+                margin-left: 200px;
+                margin-right: 200px;
+                margin-bottom: 30px;
+        }
 
     </style>
 </head>
@@ -38,8 +44,8 @@ join (
 ) dt on Contracts.contID = dt.contID
 group by PostalCode.City order by ar desc;");
 
-echo "<div style= 'float: left'>
-      <table class = 'tftable' border='1'>
+echo "<div class=\"pad\">
+      <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
                 <td align='center'>Company Name</td>
@@ -75,10 +81,10 @@ join (
 ) dt on Contracts.contID = dt.contID
 group by PostalCode.City order by ar desc;");
 
-echo "<div style= 'float: left'>
+echo "<div class=\"pad\">
 <br>
 <h5>Top Ratings for Category Gold Grouped by Cities</h5>
-      <table class = 'tftable' border='1'>
+      <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
                 <td align='center'>Company Name</td>
@@ -113,10 +119,10 @@ join (
 ) dt on Contracts.contID = dt.contID
 group by PostalCode.City order by ar desc;");
 
-echo "<div style= 'float: left'>
+echo "<div class=\"pad\">
 <br>
 <h5>Top Ratings for Category Premium Grouped by Cities</h5>
-      <table class = 'tftable' border='1'>
+      <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
                 <td align='center'>Company Name</td>
@@ -151,10 +157,10 @@ join (
 ) dt on Contracts.contID = dt.contID
 group by PostalCode.City order by ar desc;");
 
-echo "<div style= 'float: left'>
+echo "<div class=\"pad\">
 <br>
 <h5>Top Ratings for Category Diamond Grouped by Cities</h5>
-      <table class = 'tftable' border='1'>
+      <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
                 <td align='center'>Company Name</td>

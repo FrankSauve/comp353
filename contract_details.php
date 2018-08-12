@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        .tftable { margin-right:100px;}
+        .pad {
+                margin-top: 30px;
+                margin-left: 200px;
+                margin-right: 200px;
+                margin-bottom: 30px;
+        }
 
     </style>
 </head>
@@ -31,34 +37,34 @@ $query = mysqli_query($conn, "select Contracts.*, Company.CompName, Employees.fN
                                     inner join Employees on CreatedBy.EmployeeID = Employees.EmployeeID 
                                     where StartDate >= (CURDATE()-10) order by StartDate, ContID;");
 
-echo "<div style= 'float: left'>
-      <table class = 'tftable' border='2'>
+echo "<div class=\"pad\">
+      <table  class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
-                <td align='center'>Contract ID</td>
-                <td align='center'>Company ID</td>
-                <td align='center'>Company Name</td>
-                <td align='center'>Responsible ID</td>
-                <td align='center'>AVC</td>
-                <td align='center'>IV</td>
-                <td align='center'>StartDate</td>
-                <td align='center'>Category</td>
-                <td align='center'>Type Of Service</td>
-                <td align='center'>Sales Associate</td>
+                <td>Contract ID</td>
+                <td>Company ID</td>
+                <td>Company Name</td>
+                <td>Responsible ID</td>
+                <td>AVC</td>
+                <td>IV</td>
+                <td>StartDate</td>
+                <td>Category</td>
+                <td>Type Of Service</td>
+                <td>Sales Associate</td>
             </tr>";
 
 while ($row = mysqli_fetch_array($query)) {
     echo "<tr>";
-    echo "<td align='center'>" . $row['ContID'] . "</td>";
-    echo "<td align='center'>" . $row['CompID'] . "</td>";
-    echo "<td nowrap='' align='center'>" . $row['CompName'] . "</td>";
-    echo "<td align='center'>" . $row['RespoID'] . "</td>";
-    echo "<td align='center'>$" . $row['AVC'] . "</td>";
-    echo "<td align='center'>$" . $row['IV'] . "</td>";
-    echo "<td nowrap='' align='center'>" . $row['StartDate'] . "</td>";
-    echo "<td align='center'>" . $row['Category'] . "</td>";
-    echo "<td align='center'>" . $row['TypeOfService'] . "</td>";
-    echo "<td nowrap='' align='center'>" . $row['fName'] ." ". $row['lName']."</td>";
+    echo "<td>" . $row['ContID'] . "</td>";
+    echo "<td>" . $row['CompID'] . "</td>";
+    echo "<td nowrap=''>" . $row['CompName'] . "</td>";
+    echo "<td>" . $row['RespoID'] . "</td>";
+    echo "<td>$" . $row['AVC'] . "</td>";
+    echo "<td>$" . $row['IV'] . "</td>";
+    echo "<td nowrap=''>" . $row['StartDate'] . "</td>";
+    echo "<td>" . $row['Category'] . "</td>";
+    echo "<td>" . $row['TypeOfService'] . "</td>";
+    echo "<td nowrap=''>" . $row['fName'] ." ". $row['lName']."</td>";
     echo "</tr>";
 }
 echo "</table></div>";

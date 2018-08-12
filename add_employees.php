@@ -44,10 +44,11 @@ include('navbar.php');
     if (isset($_POST['submit'])) {
         $selected_val = $_POST['Company_Selection'];
         echo "Company selected: <Strong>" . $selected_val . "</Strong><br>";
-        echo "<br> This Company has the following Contracts, please select a contract to remove employees from";
+        echo "<br> This Company has the following Contracts, please select a contract to add an employee to";
         echo '<form action="#" method="post">';
 
-        $sql1 = "SELECT  ContID FROM Contracts inner join Company on Contracts.CompID = Company.CompID
+        $sql1 = "SELECT  ContID FROM Contracts 
+                inner join Company on Contracts.CompID = Company.CompID
                 where Company.CompName = '" . $selected_val . "'";
         $result1 = $conn->query($sql1);
 
@@ -71,78 +72,79 @@ include('navbar.php');
                   where ContID = " . $selected_Cont . " ";
         $result2 = $conn->query($sql2);
         while ($row2 = $result2->fetch_assoc()) {
+
             echo "The company selected is <Strong>" . $row2['CompName'] . "</Strong> and contract # is <Strong>"
                 . $row2['ContID'] . "</Strong></br>";
         }
 
-        if ($type == 'hour') {
-            $sql3 = "select EmployeeHistory.EmployeeID, Employees.fName, Employees.lName, sum(Hours.hours), Company.CompName
-                from EmployeeHistory
-                inner join Employees on EmployeeHistory.EmployeeID = Employees.EmployeeID
-                inner join Hours on EmployeeHistory.EmployeeID = Hours.EmployeeID and EmployeeHistory.contID = Hours.contID
-                inner join Company on (select Contracts.CompID from Contracts inner join Company on Contracts.CompID = Company.CompID where Contracts.contID = $selected_Cont)=Company.CompID
-                where EmployeeHistory.contID = $selected_Cont
-                group by Employees.fName;";
+
+
+
+            $sql3 = "select EmployeeID, fName, lName
+                    from Employees
+                    where EDID = 3 and EmployeeID
+                    not in (select EmployeeID from EmployeeHistory where isActive = 1) order by fName";
 
             $result3 = $conn->query($sql3);
-            echo "Employess and hours";
-            echo "<table class = 'w3-table-all w3-card-4' border='2'>
-                <tr>
-                    <td>Employee ID</td>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Total Hours</td>
-                </tr>";
-
-            while ($row3 = $result3->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row3['EmployeeID'] . "</td>";
-                echo "<td>" . $row3['fName'] . "</td>";
-                echo "<td>" . $row3['lName'] . "</td>";
-                echo "<td>" . $row3['sum(Hours.hours)'] . "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-        } else if ($type == 'remove') {
-
-            $sql4 = "select Employees.fName, Employees.lName,Employees.EmployeeID, EmployeeHistory.ContID
-                from EmployeeHistory
-                inner join Employees on EmployeeHistory.EmployeeID = Employees.EmployeeID
-                inner join Company on (select Contracts.CompID from Contracts inner join Company on Contracts.CompID = Company.CompID where Contracts.contID = $selected_Cont)=Company.CompID
-                where EmployeeHistory.contID = $selected_Cont and EmployeeHistory.isActive = 1;";
-
-            $result4 = $conn->query($sql4);
             echo "</br>";
-            echo "Select employees to remove from contract</br>";
+            echo "Select employees to add to contract</br>";
+
+        $sql6 = "select max(EmployeeHistory.ContID), Teams.TeamID, Employees.fName, Employees.lName from EmployeeHistory
+        inner join Teams on EmployeeHistory.teamID = Teams.TeamID
+        inner join Employees on Teams.ManagerID = Employees.EmployeeID
+        where contID= $selected_Cont" ;
+
+
+
+
+        $result6 = $conn->query($sql6);
+        $row6 = $result6 ->fetch_assoc();
+        $teamID = $row6['TeamID'];
+
+        $result7 = $conn->query($sql2);
+        $row7 = $result7 ->fetch_assoc();
+
+        $contID = $row7['ContID'];
+
+
+
+
             echo '<form action="#" method="post">';
 
-            while ($row4 = $result4->fetch_assoc()) {
-                $id = $row4['EmployeeID'];
-                $fname = $row4['fName'];
-                $lname = $row4['lName'];
-                $contID = $row4['ContID'];
+            while ($row3 = $result3->fetch_assoc()) {
+                $id = $row3['EmployeeID'];
+                $fname = $row3['fName'];
+                $lname = $row3['lName'];
+
+
                 echo "<tr>";
                 echo '<input type="hidden" name="ContID" value = "' . $contID . '"readonly </input>';
+                echo '<input type="hidden" name="teamID" value = "' . $teamID . '"readonly </input>';
                 echo "<td><input type='checkbox' name='checkbox[]' value='$id'> $fname $lname<br></td>";
                 echo "</tr>";
             }
 
-            echo '     ' . '<input type ="submit" name="delete" value="Submit"/>';
+            echo '     ' . '<input type ="submit" name="add" value="Submit"/>';
             echo '</form>';
-        }
+
     }
-    if (isset($_POST['delete'])) {
+    if (isset($_POST['add'])) {
         $selected_ContID = (int)$_POST['ContID'];
+        $teamID = (int)$_POST['teamID'];
         $checkbox = $_POST['checkbox'];
         foreach ($checkbox as $id) {
             $id = (int)$id;
-            $sql5 = "update EmployeeHistory set isActive = 0 where EmployeeID = $id and contID = $selected_ContID";
+            $sql5 = "insert into EmployeeHistory(EmployeeID,teamID,contID,isActive) values($id,$teamID,$selected_ContID,1)";
             if ($conn->query($sql5) === TRUE) {
-                echo "Record deleted successfully";
-            } else {
-                echo "Error deleting record: " . $conn->error;
+
             }
+
+            else {
+                echo "Error adding record: ". $conn->error;
+            }
+
         }
+        echo '<br><div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Record updated successfully for Responsible</div>';
     }
 
     ?>
