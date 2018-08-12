@@ -5,6 +5,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
         .pad {
@@ -46,16 +47,16 @@ include('navbar.php');
             group by ContID";
     $result1 = $conn->query($sql1);
 
-    echo "<table border = 1> 
+    echo "<table class=\"w3-table-all w3-card-4\" border = 1> 
         <tr>
-        <td align='center'>Company Name</td>
-        <td align='center'>Rating Given</td>
+        <td><Strong>Company Name</Strong></td>
+        <td><Strong>Rating Given</Strong></td>
         </tr>";
 
     while ($row1 = $result1->fetch_assoc()) {
         echo "<tr>";
-        echo "<td align='center'>" . $row1['CompName'] . "</td>";
-        echo "<td align='center'>" . $row1['Rating'] . "</td>";
+        echo "<td>" . $row1['CompName'] . "</td>";
+        echo "<td>" . $row1['Rating'] . "</td>";
        echo "</tr>";
     }
 

@@ -41,7 +41,7 @@ $sql = "SELECT ContID FROM Contracts inner join Company on Contracts.CompID = Co
                 where Company.username = '" . $user . "'";
 $result = $conn->query($sql);
 
-echo '<label>Company ID</label>';
+echo '<label>Contract ID</label>';
 echo '<select name="Contracts_Selection" class="form-control" >';
 echo '<option value=""></option>';
 // output data of each row
