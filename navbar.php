@@ -106,6 +106,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <div class=\"collapse navbar-collapse\">
                 <div class=\"navbar-nav\">
                     <a class=\"nav-item nav-link active\" href=\"./\">Home</a>
+                    <a class=\"nav-item nav-link\" href=\"./client_view.php\">Dashboard</a>
                     <a class=\"nav-item nav-link\" href=\"./logout.php\">Logout</a>
                 </div>
             </div>
