@@ -134,6 +134,7 @@
                 echo "<td>" . $differenceDays . "</td>";
                 echo "</tr>";
             }
+            echo '</table>'
         ?>
         </div>
     </div>
