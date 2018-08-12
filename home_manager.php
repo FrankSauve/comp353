@@ -13,7 +13,9 @@
 <a href="empSearch_manager.php?type=hour">Employee Hours Report</a> </br>
 <a href="contractSearch_manager.php?type=hour">Contract Hours Report</a> </br>
 <a href="contractSearch_manager.php?type=remove">Remove Employee from Contract</a></br>
-<a href="viewContracts_manager.php?">View Contracts</a>
+<a href="viewContracts_manager.php?">View Contracts</a></br>
+<a href="top_contracts.php?">View Clients With Most Contracts</a>
+<a href="top_ratings.php?">View Clients With Most Contracts</a>
 
 </body>
 </html>
