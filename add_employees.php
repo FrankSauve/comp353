@@ -11,16 +11,31 @@
             padding-left: 1em;
             padding-top: 1em;
         }
-
+        #container {
+            margin-top: 30px;
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
 <?php
-$type = $_GET['type'];
 include('navbar.php');
+
+// Check if the user is authorized to see this page
+// If the user is not logged in
+if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+    header('Location: unauthorized.html');
+}
+// If the user is not a manager
+else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
+    header('Location: unauthorized.html');
+}
 ?>
 
-<div1>
+<div id="container">
+    <h1>Add employee to contract</h1>
     <?php
     echo "<div class=\"pad\">";
     include('db_connection.php');
@@ -36,7 +51,7 @@ include('navbar.php');
         echo '<option value="' . $row['CompName'] . '">' . $row['CompName'] . '</option>';
     }
     echo '</select>';
-    echo '     ' . '<input type ="submit" name="submit" value="Submit"/>';
+    echo '     ' . '<input class="btn btn-primary" type ="submit" name="submit" value="Submit"/>';
     echo '</form>';
     #$conn->close();
     '<br/>';
@@ -59,7 +74,7 @@ include('navbar.php');
             echo '<option value="' . $row1['ContID'] . '">' . $row1['ContID'] . '</option>';
         }
         echo '</select>';
-        echo '     ' . '<input type ="submit" name="Enter" value="Submit"/>';
+        echo '     ' . '<input class="btn btn-primary" type ="submit" name="Enter" value="Submit"/>';
         echo '</form>';
     }
 
@@ -77,9 +92,6 @@ include('navbar.php');
                 . $row2['ContID'] . "</Strong></br>";
         }
 
-
-
-
             $sql3 = "select EmployeeID, fName, lName
                     from Employees
                     where EDID = 3 and EmployeeID
@@ -94,9 +106,6 @@ include('navbar.php');
         inner join Employees on Teams.ManagerID = Employees.EmployeeID
         where contID= $selected_Cont" ;
 
-
-
-
         $result6 = $conn->query($sql6);
         $row6 = $result6 ->fetch_assoc();
         $teamID = $row6['TeamID'];
@@ -106,16 +115,12 @@ include('navbar.php');
 
         $contID = $row7['ContID'];
 
-
-
-
             echo '<form action="#" method="post">';
 
             while ($row3 = $result3->fetch_assoc()) {
                 $id = $row3['EmployeeID'];
                 $fname = $row3['fName'];
                 $lname = $row3['lName'];
-
 
                 echo "<tr>";
                 echo '<input type="hidden" name="ContID" value = "' . $contID . '"readonly </input>';
@@ -124,7 +129,7 @@ include('navbar.php');
                 echo "</tr>";
             }
 
-            echo '     ' . '<input type ="submit" name="add" value="Submit"/>';
+            echo '     ' . '<input class="btn btn-primary" type ="submit" name="add" value="Submit"/>';
             echo '</form>';
 
     }
@@ -142,11 +147,9 @@ include('navbar.php');
             else {
                 echo "Error adding record: ". $conn->error;
             }
-
         }
         echo '<br><div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Record updated successfully for Responsible</div>';
     }
-
     ?>
-</div1>
+</div>
 </body>

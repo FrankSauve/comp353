@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Top Clients</title>
+    <title>Top Contracts</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
           crossorigin="anonymous">
@@ -15,6 +15,12 @@
                 margin-right: 200px;
                 margin-bottom: 30px;
         }
+        #container {
+            margin-top: 30px;
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-bottom: 30px;
+        }
 
     </style>
 </head>
@@ -22,6 +28,19 @@
 <body>
 
 <?php include('navbar.php');
+// Check if the user is authorized to see this page
+// If the user is not logged in
+if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+    header('Location: unauthorized.html');
+}
+// If the user is not a manager
+else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
+    header('Location: unauthorized.html');
+}
+?>
+<div id="container">
+    <h1>Top Contracts</h1>
+<?php
 include('db_connection.php');
 
 
@@ -41,9 +60,9 @@ echo "<div class=\"pad\">
       <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
-                <td align='center'>Company ID</td>
-                <td align='center'>Company Name</td>
-                <td align='center'>Number of Contracts</td>
+                <th align='center'>Company ID</th>
+                <th align='center'>Company Name</th>
+                <th align='center'>Number of Contracts</th>
             </tr>";
 
 while ($row = mysqli_fetch_array($query)) {
@@ -82,10 +101,8 @@ while ($row2 = mysqli_fetch_array($query2)) {
     echo "</tr>";
 }
 echo "</table></div>";
-
-
 ?>
-
+</div>
 
 </body>
 </html>

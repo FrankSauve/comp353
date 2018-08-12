@@ -15,19 +15,32 @@
                 margin-right: 200px;
                 margin-bottom: 30px;
         }
+        #container {
+            margin-top: 30px;
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 
 <body>
 
 <?php include('navbar.php');
+// Check if the user is authorized to see this page
+// If the user is not logged in
+if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+    header('Location: unauthorized.html');
+}
+// If the user is not a manager
+else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
+    header('Location: unauthorized.html');
+}
+?>
+<div id="container">
+<?php
 include('db_connection.php');
-echo "</br>";
-
-echo "</br>";
 echo "<h5>Quebec Employees</h5>";
-echo "</br>";
-
 
 $query1 = mysqli_query($conn, "select Employees.EmployeeID, Employees.fName,lName, Insurance.typeDescript, EmployeeType.Descript, PostalCode.Province From Employees 
                                         inner join EmployeeHistory on Employees.EmployeeID = EmployeeHistory.EmployeeID
@@ -39,18 +52,17 @@ $query1 = mysqli_query($conn, "select Employees.EmployeeID, Employees.fName,lNam
                                         where PostalCode.Province ='QC' group by Employees.EmployeeID;");
 
 $num_rows = mysqli_num_rows($query1);
-echo "</br>";
 echo $num_rows . " Results Found" . '</br>' . '</br>';
 
 echo "<div class=\"pad\">
       <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
-                <td>Employee ID</td>
-                <td>Employee Name</td>
-                <td>Type of Coverage</td>
-                <td>Type of Employee</td>
-                <td>Province</td>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Type of Coverage</th>
+                <th>Type of Employee</th>
+                <th>Province</th>
             </tr>";
 
 while ($row1 = mysqli_fetch_array($query1)) {
@@ -64,7 +76,6 @@ while ($row1 = mysqli_fetch_array($query1)) {
 }
 echo "</table></div>";
 ?>
-
-
+</div>
 </body>
 </html>

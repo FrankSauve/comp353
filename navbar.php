@@ -102,7 +102,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </ul>
         </nav>";
         }
-        else {
         //If User is an Employee.
         if ($EDID == 3) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">

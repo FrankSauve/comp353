@@ -5,6 +5,7 @@
     <title>My Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
         #container {
@@ -130,7 +131,7 @@ if(isset($_POST["preference"])&& !$error){
 
     // Every row involving the employee's history populates the table
     if ($result->num_rows > 0) {
-        echo "<table border='1'>
+        echo "<table class = 'w3-table-all w3-card-4' border='1'>
         <tr>
         <th>Team ID</th>
         <th>Contract ID</th>
@@ -155,7 +156,7 @@ if(isset($_POST["preference"])&& !$error){
     }
     // If there is no employee history, a table with an empty row is created
     else{
-        echo "<table border='1'>
+        echo "<table class = 'w3-table-all w3-card-4' border='1'>
         <tr>
         <th>Team ID</th>
         <th>Contract ID</th>

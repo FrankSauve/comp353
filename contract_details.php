@@ -15,20 +15,33 @@
                 margin-right: 200px;
                 margin-bottom: 30px;
         }
-
+        #container {
+            margin-top: 30px;
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 
 <body>
 
 <?php include('navbar.php');
+// Check if the user is authorized to see this page
+// If the user is not logged in
+if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+    header('Location: unauthorized.html');
+}
+// If the user is not a manager
+else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
+    header('Location: unauthorized.html');
+}
+?>
+<div id="container">
+<?php
 include('db_connection.php');
 
-
-
-echo "</br>";
 echo "<h5>Contracts Recorded Within the Last 10 Days in All Categories</h5>";
-echo "</br>";
 
 $query = mysqli_query($conn, "select Contracts.*, Company.CompName, Employees.fName, Employees.lName
                                     from Contracts 
@@ -68,11 +81,7 @@ while ($row = mysqli_fetch_array($query)) {
     echo "</tr>";
 }
 echo "</table></div>";
-
-
-
 ?>
-
-
+</div>
 </body>
 </html>

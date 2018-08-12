@@ -2,25 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Contract Hours</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
         .pad {
             padding-left: 1em;
             padding-top: 1em;
         }
-
+        #container {
+             margin-top: 30px;
+             margin-left: 200px;
+             margin-right: 200px;
+             margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
 <?php
 $type = $_GET['type'];
 include('navbar.php');
+// Check if the user is authorized to see this page
+// If the user is not logged in
+if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+    header('Location: unauthorized.html');
+}
+// If the user is not a manager
+else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
+    header('Location: unauthorized.html');
+}
 ?>
 
-<div1>
+<div id="container">
+    <h1>Contract Hours</h1>
     <?php
     echo "<div class=\"pad\">";
     include('db_connection.php');
@@ -36,7 +52,7 @@ include('navbar.php');
         echo '<option value="' . $row['CompName'] . '">' . $row['CompName'] . '</option>';
     }
     echo '</select>';
-    echo '     ' . '<input type ="submit" name="submit" value="Submit"/>';
+    echo '     ' . '<input class="btn btn-primary" type ="submit" name="submit" value="Submit"/>';
     echo '</form>';
     #$conn->close();
     '<br/>';
@@ -58,7 +74,7 @@ include('navbar.php');
             echo '<option value="' . $row1['ContID'] . '">' . $row1['ContID'] . '</option>';
         }
         echo '</select>';
-        echo '     ' . '<input type ="submit" name="Enter" value="Submit"/>';
+        echo '     ' . '<input class="btn btn-primary" type ="submit" name="Enter" value="Submit"/>';
         echo '</form>';
     }
 
@@ -88,10 +104,10 @@ include('navbar.php');
             echo "Employess and hours";
             echo "<table class = 'w3-table-all w3-card-4' border='2'>
                 <tr>
-                    <td>Employee ID</td>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Total Hours</td>
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Total Hours</th>
                 </tr>";
 
             while ($row3 = $result3->fetch_assoc()) {
@@ -115,7 +131,6 @@ include('navbar.php');
             echo "</br>";
             echo "Select employees to remove from contract</br>";
             echo '<form action="#" method="post">';
-
             while ($row4 = $result4->fetch_assoc()) {
                 $id = $row4['EmployeeID'];
                 $fname = $row4['fName'];
@@ -127,7 +142,7 @@ include('navbar.php');
                 echo "</tr>";
             }
 
-            echo '     ' . '<input type ="submit" name="delete" value="Submit"/>';
+            echo '     ' . '<input class="btn btn-primary" type ="submit" name="delete" value="Submit"/>';
             echo '</form>';
         }
     }
@@ -138,7 +153,7 @@ include('navbar.php');
             $id = (int)$id;
             $sql5 = "update EmployeeHistory set isActive = 0 where EmployeeID = $id and contID = $selected_ContID";
             if ($conn->query($sql5) === TRUE) {
-                echo "Record deleted successfully";
+                echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Record updated successfully</div>';
             } else {
                 echo "Error deleting record: " . $conn->error;
             }
@@ -146,5 +161,5 @@ include('navbar.php');
     }
 
     ?>
-</div1>
+</div>
 </body>

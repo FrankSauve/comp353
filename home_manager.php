@@ -25,7 +25,9 @@
 <a class="links"" href="top_contracts.php">View Clients With Most Contracts</a></br>
 <a class="links" href="top_ratings.php">View Highest Ratings Grouped by City</a></br>
 <a class="links" href="fetch_empDetails.php">Fetch Employees Details From Quebec</a></br>
-<a class="links" href="contract_details.php">Contracts Recorded Within the Last 10 Days in All Categories</a>
-
+<a class="links" href="contract_details.php">Contracts Recorded Within the Last 10 Days in All Categories</a></br>
+<a class="links" href="report.php">Number of employees with Premium Employee plan with working hours less than 60 hrs/month</a></br>
+<a class="links" href="report.php">Number of Premium contracts delivered in more than 10 business days having more than 35 employees with “Silver Employee Plan”</a></br>
+<a class="links" href="report.php">Delivery schedule of "First deliverable" of all type of contracts (Premium/Diamond etc.) in each month of year 2017”</a></br>
 </body>
 </html>
