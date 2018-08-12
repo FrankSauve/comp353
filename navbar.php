@@ -70,7 +70,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         </nav>";
         }
          //If User is an admin.
-        else if ($EDID == 4) {
+        if ($EDID == 4) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
@@ -85,6 +85,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </ul>
         </nav>";
         }
+
         //If User is a manager.
         if ($EDID == 1) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
@@ -102,6 +103,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         </nav>";
         }
         else {
+        //If User is an Employee.
+        if ($EDID == 3) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
             <div class=\"collapse navbar-collapse\">
@@ -118,6 +121,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         </nav>";
         }
     }
+    //If User is an Client.
     else {
         echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
