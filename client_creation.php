@@ -139,7 +139,7 @@
                 $sql = "INSERT INTO Company (CompName, PostalCode, username) VALUES ('$companyName', '$postalCode', '$username')";
                 if ($conn->query($sql) === TRUE) {
                     // Insert in the Responsible table
-                    $sql = "INSERT INTO Responsible (fName, mName, lName, contact, Email) VALUES ('$fName', 'mName', '$lName', '$contact', '$email')";
+                    $sql = "INSERT INTO Responsible (fName, mName, lName, contact, Email) VALUES ('$fName', '$mName', '$lName', '$contact', '$email')";
                     if ($conn->query($sql) === TRUE) {
                         // Client successfully added to all tables
                         echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Client was created.</div>';
