@@ -23,6 +23,12 @@ include('navbar.php');
 <?php
 include('db_connection.php');
 
+// Check if the user is authorized to see this page
+// If the user is not logged in
+if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
+    header('Location: unauthorized.html');
+}
+
 if (isset($_SESSION['username']) == TRUE) {
     $user = ($_SESSION['username']);
 }
@@ -35,6 +41,7 @@ $sql = "SELECT ContID FROM Contracts inner join Company on Contracts.CompID = Co
                 where Company.username = '" . $user . "'";
 $result = $conn->query($sql);
 
+echo '<label>Company ID</label>';
 echo '<select name="Contracts_Selection" class="form-control" >';
 echo '<option value=""></option>';
 // output data of each row
