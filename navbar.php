@@ -83,6 +83,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </ul>
         </nav>";
         }
+        //If User is a manager.
         if ($EDID == 1) {
             echo "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">
             <a class=\"navbar-brand\" href=\"#\">COMP 353</a>
