@@ -30,6 +30,10 @@
         header('Location: unauthorized.html');
     }
 
+    if (isset($_SESSION['username']) == TRUE) {
+        $user = ($_SESSION['username']);
+    }
+
     // Get the company ID from the company name
     if (isset($_POST['company'])) {
         $selectedCompany = $_POST['company'];
@@ -106,6 +110,21 @@
                 echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Contract created successfully.</div>';
             }
         }
+
+        //Adding an entry to the CreatedBy table so we can track who is the sales person who created the contract.
+        $sql1 = "select EmployeeID from Employees where username = '$user'";
+        $result1 = $conn->query($sql1);
+        $row1 = $result1->fetch_assoc();
+        $saleID = (int)$row1['EmployeeID'];
+            $sql2 = "SELECT MAX(ContID) FROM Contracts";
+            $result2 = $conn->query($sql2);
+            $row2 = $result2->fetch_assoc();
+            $contID = (int)$row['MAX(ContID)'];
+            $sql3 = "insert into CreatedBy (ContID,EmployeeID) values ('$contID','$saleID')";
+            if ($conn->query($sql3) === TRUE) {
+
+            }
+
     }
 ?>
 <body>
