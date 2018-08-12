@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Client Creation</title>
+    <title>Report</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -105,6 +105,35 @@
                 }
             }
             echo "<strong>Total count: </strong>" . $count2;
+        ?>
+        </div>
+        <p class="subtitle">Delivery schedule of <strong>first deliverable</strong> of all types of contracts in each month of  <strong>2017</strong></p>
+        <div class="data">
+        <?php
+            // Contracts in 2017
+            $sql = "SELECT StartDate, FirstDeliv, ContID, Category FROM Contracts WHERE StartDate < '2018-01-01' AND StartDate > '2016-12-31' ORDER BY StartDate";
+            $result = $conn->query($sql);
+
+            echo "<table border='1'>
+                <tr>
+                <th>ContID</th>
+                <th>Category</th>
+                <th>Start Date</th>
+                <th>First Delivery</th>
+                <th>Days</th>
+                </tr>";
+            while ($row = $result->fetch_assoc()) {
+                // Difference in days
+                $difference = date_diff(date_create($row['FirstDeliv']), date_create($row['StartDate']));
+                $differenceDays = $difference->d;
+                echo "<tr>";
+                echo "<td>" . $row['ContID'] . "</td>";
+                echo "<td>" . $row['Category'] . "</td>";
+                echo "<td>" . $row['StartDate'] . "</td>";
+                echo "<td>" . $row['FirstDeliv'] . "</td>";
+                echo "<td>" . $differenceDays . "</td>";
+                echo "</tr>";
+            }
         ?>
         </div>
     </div>
