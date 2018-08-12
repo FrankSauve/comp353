@@ -18,15 +18,6 @@
 <body>
 <?php
 include('navbar.php');
-// Check if the user is authorized to see this page
-// If the user is not logged in
-if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
-    header('Location: unauthorized.html');
-}
-// If the user is not an admin
-else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 4) {
-    header('Location: unauthorized.html');
-}
 ?>
 
 <div1>
