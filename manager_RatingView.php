@@ -30,7 +30,7 @@ include('navbar.php');
 
     //Searching for the manager's team ID.
     $sql = "select max(EmployeeHistory.ContID), Teams.TeamID, Employees.fName, Employees.lName from EmployeeHistory
-            inner join Teams  on EmployeeHistory.teamID = Teams.TeamID
+            inner join Teams on EmployeeHistory.teamID = Teams.TeamID
             inner join Employees on Teams.ManagerID = Employees.EmployeeID
             where contID ='" . $findManager . "'";
     $result = $conn->query($sql);
