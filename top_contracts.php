@@ -88,9 +88,9 @@ echo "<div class=\"pad\">
       <table class = 'w3-table-all w3-card-4' border='2'>
             
             <tr>
-                <td align='center'>Company ID</td>
-                <td align='center' >Company Name</td>
-                <td align='center'>Number of Contracts</td>
+                <th align='center'>Company ID</th>
+                <th align='center' >Company Name</th>
+                <th align='center'>Number of Contracts</th>
             </tr>";
 
 while ($row2 = mysqli_fetch_array($query2)) {
