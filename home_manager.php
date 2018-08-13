@@ -1,3 +1,4 @@
+<?php include('navbar.php') ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
@@ -13,7 +14,7 @@
 
     </style>
 </head>
-<?php include('navbar.php') ?>
+
 <html>
 </br>
 <h3 class="h3">Please Select a Task</h3>

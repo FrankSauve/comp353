@@ -1,3 +1,7 @@
+<?php
+include('db_connection.php');
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +18,6 @@
 <body>
 
 <?php
-include('db_connection.php');
-session_start();
 
 // If the user is logged in
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {

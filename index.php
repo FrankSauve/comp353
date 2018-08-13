@@ -1,3 +1,7 @@
+<?php
+include('navbar.php');
+include('db_connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +19,7 @@
     </style>
 </head>
 <body>
-<?php
-include('navbar.php');
-include('db_connection.php');
-?>
+
 <div id="container">
     <h1>Index of COMP 353 project</h1>
     <h3>Contributors</h3>

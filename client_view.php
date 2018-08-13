@@ -1,3 +1,6 @@
+<?php
+include('navbar.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +19,7 @@
     </style>
 </head>
 <body>
-<?php
-include('navbar.php');
-?>
+
 <div>
 <?php
 include('db_connection.php');
@@ -26,7 +27,7 @@ include('db_connection.php');
 // Check if the user is authorized to see this page
 // If the user is not logged in
 if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
-    header('Location: unauthorized.html');
+    echo "<script type='text/javascript'>document.location.href='unauthorized.html';</script>";
 }
 
 if (isset($_SESSION['username']) == TRUE) {

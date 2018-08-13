@@ -1,3 +1,4 @@
+<?php include('navbar.php');?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,15 +27,15 @@
 
 <body>
 
-<?php include('navbar.php');
+<?php
 // Check if the user is authorized to see this page
 // If the user is not logged in
 if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
-    header('Location: unauthorized.html');
+    echo "<script type='text/javascript'>document.location.href='unauthorized.html';</script>";
 }
 // If the user is not a manager
 else if (isset($_SESSION['EDID']) && $_SESSION['EDID'] != 1) {
-    header('Location: unauthorized.html');
+    echo "<script type='text/javascript'>document.location.href='unauthorized.html';</script>";
 }
 ?>
 <div id="container">

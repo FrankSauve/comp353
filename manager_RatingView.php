@@ -1,3 +1,6 @@
+<?php
+include('navbar.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +20,7 @@
     </style>
 </head>
 <body>
-<?php
-include('navbar.php');
-?>
+
 <div>
     <?php
     include('db_connection.php');

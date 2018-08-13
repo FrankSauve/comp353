@@ -1,3 +1,4 @@
+<?php include('navbar.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,18 +18,18 @@
     </style>
 </head>
 <?php
-include('navbar.php');
+
 include('db_connection.php');
 $error = false; // Changes to true if there is a validation error
 
 // Check if the user is authorized to see this page
 // If the user is not logged in
 if (isset($_SESSION['loggedin']) == false && $_SESSION['loggedin'] == false) {
-    header('Location: unauthorized.html');
+    echo "<script type='text/javascript'>document.location.href='unauthorized.html';</script>";
 }
 // If the user is an employee
 else if (!isset($_SESSION['EDID'])) {
-    header('Location: unauthorized.html');
+    echo "<script type='text/javascript'>document.location.href='unauthorized.html';</script>";
 }
 
 //getting preference upon loading

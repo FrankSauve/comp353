@@ -1,3 +1,4 @@
+<?php include('navbar.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
 <body>
 
 <?php
-include('navbar.php');
+
 include('db_connection.php');
 $error = false; // Becomes true if there is a validation error
 
@@ -55,7 +56,7 @@ if (isset($_POST['username']) && !$error) {
             echo '<div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> You are now logged in.</div>';
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $row['username'];
-            header('Location: index.php'); // Redirect to navbar
+            echo "<script type='text/javascript'>document.location.href='index.php';</script>";
         }
         else {
             echo '<div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Password is incorrect.</div>';

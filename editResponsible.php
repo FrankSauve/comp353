@@ -1,3 +1,6 @@
+<?php
+include('navbar.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +21,7 @@
     </style>
 </head>
 <body>
-<?php
-include('navbar.php');
-?>
+
 
 <div1>
     <?php
@@ -79,7 +80,7 @@ include('navbar.php');
             where RespoID =  $ID  ";
 
             if ($conn->query($sql2) === TRUE) {
-                header('Refresh:5;Location: '.$_SERVER['REQUEST_URI']);
+                echo "<script type='text/javascript'>document.location.href='{$_SERVER['REQUEST_URI']}';</script>";
                 echo '<br><div id="error" class="alert alert-success" role="alert"><strong>SUCCESS: </strong> Record updated successfully for Responsible:"' .$New_Name. " " . $New_lName . '"</div>';
 
             }
@@ -90,7 +91,7 @@ include('navbar.php');
         }
 
         else {
-            header('Refresh:5;Location: '.$_SERVER['REQUEST_URI']);
+            echo "<script type='text/javascript'>document.location.href='{$_SERVER['REQUEST_URI']}';</script>";
             echo '<br><div id="error" class="alert alert-danger" role="alert"><strong>ERROR: </strong> Something is wrong with the input please make sure you have filled in all the fields! </div>';
         }
     }
